@@ -62,5 +62,6 @@ Before running the project, ensure you have the following prerequisites:
 
 4. **Run Following Commands to Run the code:**
 
-  1. mvn clean install
-  2. java -jar target/your-project.jar
+  ```mvn clean install ```
+
+  ```java -jar target/your-project.jar```
