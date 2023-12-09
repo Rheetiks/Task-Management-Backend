@@ -35,6 +35,8 @@ public class Controller {
 
     }
 
+    
+
     @PostMapping("/createTask")
     public String createTask(@RequestHeader("Authorization") String authorization,@RequestBody Task task) throws DataAccessException, ParseException {
         String jwtToken = authorization.replace("Bearer ", "");
@@ -51,6 +53,12 @@ public class Controller {
     public String updateTask(@PathVariable int id,@RequestBody String status,@RequestHeader("Authorization") String authorization) {
         String jwtToken = authorization.replace("Bearer ", "");
         return this.service.updateTask(id,status,jwtToken);
+    }
+
+    @GetMapping("/getTask/{id}")
+    public List<Task> getTaskById(@PathVariable int id) {
+        return service.getTaskById(id);
+
     }
     
     

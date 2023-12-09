@@ -59,5 +59,10 @@ public class Dao {
         return "Successfully updated the Task";
     }
 
+    public List<Task> getTaskById(int id){
+        String sql="select * from Task where taskId=?";
+        return this.jdbc.query(sql,new TaskRowMapper(),id);
+    }
+
    
 }

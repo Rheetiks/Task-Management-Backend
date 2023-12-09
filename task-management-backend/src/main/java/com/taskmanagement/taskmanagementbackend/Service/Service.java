@@ -56,4 +56,8 @@ public class Service  implements UserDetailsService{
     public String updateTask(int id,String status,String jwtToken){
         return this.dao.updateTask(id,status,jwtToken);
     }
+
+    public List<Task> getTaskById(int id){
+        return this.dao.getTaskById(id);
+    }
 }
