@@ -49,11 +49,11 @@ public class Service  implements UserDetailsService{
         return this.dao.createTask(jwtToken, task);
     }
 
-    public String deteleTask(int id){
-        return this.dao.deleteTaskById(id);
+    public String deteleTask(int id,String jwtToken){
+        return this.dao.deleteTaskById(id,jwtToken);
     }
 
-    public String updateTask(int id,String status){
-        return this.dao.updateTask(id,status);
+    public String updateTask(int id,String status,String jwtToken){
+        return this.dao.updateTask(id,status,jwtToken);
     }
 }

@@ -38,19 +38,19 @@ public class Controller {
     @PostMapping("/createTask")
     public String createTask(@RequestHeader("Authorization") String authorization,@RequestBody Task task) throws DataAccessException, ParseException {
         String jwtToken = authorization.replace("Bearer ", "");
-        System.out.println(task.getDueDate());
-        System.out.println(task.getStatus());
         return this.service.createTask(jwtToken, task);
     }
 
     @GetMapping("/deleteTask/{id}")
-    public String deleteTask(@PathVariable int id) {
-        return this.service.deteleTask(id);
+    public String deleteTask(@PathVariable int id,@RequestHeader("Authorization") String authorization) {
+        String jwtToken = authorization.replace("Bearer ", "");
+        return this.service.deteleTask(id,jwtToken);
     }
 
     @PostMapping("/updateTask/{id}")
-    public String updateTask(@PathVariable int id,@RequestBody String status) {
-        return this.service.updateTask(id,status);
+    public String updateTask(@PathVariable int id,@RequestBody String status,@RequestHeader("Authorization") String authorization) {
+        String jwtToken = authorization.replace("Bearer ", "");
+        return this.service.updateTask(id,status,jwtToken);
     }
     
     

@@ -47,18 +47,17 @@ public class Dao {
         return this.jdbc.query(sql,new TaskRowMapper(),helper.getUsernameFromToken(jwtToken));
     }
 
-    public String deleteTaskById(int id){
-        String sql="delete from task where taskId=?";
-        this.jdbc.update(sql,id);
+    public String deleteTaskById(int id,String jwtToken){
+        String sql="delete from task where taskId=? && userId=(select userId from user where userEmail=?)";
+        this.jdbc.update(sql,id,helper.getUsernameFromToken(jwtToken));
         return "Successfully deleted the Task";
     }
 
-    public String updateTask(int id,String status){
-        String sql="update Task set status=? where taskId=?";
-        this.jdbc.update(sql,status, id);
+    public String updateTask(int id,String status,String jwtToken){
+        String sql="update Task set status=? where taskId=? && userId=(select userId from user where userEmail=?)";
+        this.jdbc.update(sql,status, id,helper.getUsernameFromToken(jwtToken));
         return "Successfully updated the Task";
     }
 
-
-    
+   
 }
